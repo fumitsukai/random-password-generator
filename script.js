@@ -88,10 +88,22 @@ const upperCasedCharacters = [
   'Z'
 ];
 
+const charSets = [];
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  //prompt the user for password length that needs to be between 8-128 chars and turn in into int
+  var length = parseInt(prompt("Please select password length between 8 and 128"));
+  if (length < 8 || length > 128) {
+    length = parseInt(prompt("Please select a value between 8 and 128"));
+  }
+  //ask user to confirm which char sets
+  confirm("Would you like the password to include special characters");
+  //make sure at least one char type is selected
+  //add all selected char sets to an array so we can start generating it
 }
+
+getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
