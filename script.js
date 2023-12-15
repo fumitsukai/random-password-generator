@@ -95,15 +95,38 @@ function getPasswordOptions() {
   //prompt the user for password length that needs to be between 8-128 chars and turn in into int
   var length = parseInt(prompt("Please select password length between 8 and 128"));
   if (length < 8 || length > 128) {
-    length = parseInt(prompt("Please select a value between 8 and 128"));
+    getPasswordOptions();
   }
   //ask user to confirm which char sets
-  confirm("Would you like the password to include special characters");
-  //make sure at least one char type is selected
+  var specialChars = confirm("Would you like the password to include special characters");
+  var numericChars = confirm("Would you like to have a numeric character?");
+  var uppercaseChars = confirm("Would you like to have a uppercase?");
+  var lowercaseChars = confirm("Would you like to have lowercase?")
   //add all selected char sets to an array so we can start generating it
+  if(specialChars) {
+    getRandom(specialCharacters);
+    charSets.push(specialCharacters);
+  }
+  if(numericChars) {
+    charSets.push(numericCharacters);
+  }
+  if(uppercaseChars) {
+    charSets.push(upperCasedCharacters);
+  }
+  if(lowercaseChars) {
+    charSets.push(lowerCasedCharacters);
+  }
+  //make sure at least one char type is selected
+
+  if (specialChars != true || numericChars != true || uppercaseChars != true || lowercaseChars != true) {
+    alert("You have to select at least one char set!");
+    getPasswordOptions();
+  }
+  
 }
 
 getPasswordOptions();
+console.log(charSets.flat());
 
 // Function for getting a random element from an array
 function getRandom(arr) {
