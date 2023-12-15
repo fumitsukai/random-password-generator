@@ -89,13 +89,13 @@ const upperCasedCharacters = [
 ];
 
 const charSets = [];
+//prompt the user for password length that needs to be between 8-128 chars and turn in into int
+do {
+  var length = parseInt(prompt("Please select password length between 8 and 128"));
+} while(length < 8 || length > 128);
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  //prompt the user for password length that needs to be between 8-128 chars and turn in into int
-  do {
-  var length = parseInt(prompt("Please select password length between 8 and 128"));
-  } while(length < 8 || length > 128);
   //ask user to confirm which char sets
   var specialChars = confirm("Would you like the password to include special characters");
   var numericChars = confirm("Would you like to have a numeric character?");
