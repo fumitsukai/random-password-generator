@@ -89,29 +89,30 @@ const upperCasedCharacters = [
 ];
 
 const charSets = [];
-//prompt the user for password length that needs to be between 8-128 chars and turn in into int
-do {
-  var length = parseInt(prompt("Please select password length between 8 and 128"));
-} while(length < 8 || length > 128);
+let length;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  //prompt the user for password length that needs to be between 8-128 chars and turn in into int
+  do {
+    length = parseInt(prompt("Please select password length between 8 and 128"));
+  } while (length < 8 || length > 128);
   //ask user to confirm which char sets
   var specialChars = confirm("Would you like the password to include special characters");
   var numericChars = confirm("Would you like to have a numeric character?");
   var uppercaseChars = confirm("Would you like to have a uppercase?");
   var lowercaseChars = confirm("Would you like to have lowercase?")
   //add all selected char sets to an array so we can start generating it
-  if(specialChars) {
+  if (specialChars) {
     charSets.push(specialCharacters);
   }
-  if(numericChars) {
+  if (numericChars) {
     charSets.push(numericCharacters);
   }
-  if(uppercaseChars) {
+  if (uppercaseChars) {
     charSets.push(upperCasedCharacters);
   }
-  if(lowercaseChars) {
+  if (lowercaseChars) {
     charSets.push(lowerCasedCharacters);
   }
   //make sure at least one char type is selected
@@ -123,14 +124,20 @@ function getPasswordOptions() {
   //flatten array and return it
   charSets.flat();
 }
-getPasswordOptions();
 // Function for getting a random element from an array
 function getRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Function to generate password with user input
 function generatePassword() {
-
+  getPasswordOptions();
+  var pass = '';
+  for (let i = 0; i < length; i++) {
+    pass += getRandom(charSets);
+  }
+  console.log(pass);
+  return pass;
 }
 
 // Get references to the #generate element
