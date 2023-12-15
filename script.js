@@ -116,19 +116,16 @@ function getPasswordOptions() {
   }
   //make sure at least one char type is selected
 
-  if (specialChars != true || numericChars != true || uppercaseChars != true || lowercaseChars != true) {
+  if (specialChars != true && numericChars != true && uppercaseChars != true && lowercaseChars != true) {
     alert("You have to select at least one char set!");
     getPasswordOptions();
   }
-  
+  //flatten array and return it
+  charSets.flat();
 }
-
 getPasswordOptions();
-console.log(charSets.flat());
-
 // Function for getting a random element from an array
 function getRandom(arr) {
-
 }
 
 // Function to generate password with user input
