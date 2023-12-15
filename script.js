@@ -122,7 +122,6 @@ function getPasswordOptions() {
     getPasswordOptions();
   }
   //flatten array and return it
-  charSets.flat();
 }
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -134,7 +133,7 @@ function generatePassword() {
   getPasswordOptions();
   var pass = '';
   for (let i = 0; i < length; i++) {
-    pass += getRandom(charSets);
+    pass += getRandom(charSets.flat());
   }
   console.log(pass);
   return pass;
