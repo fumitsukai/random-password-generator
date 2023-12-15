@@ -93,10 +93,9 @@ const charSets = [];
 // Function to prompt user for password options
 function getPasswordOptions() {
   //prompt the user for password length that needs to be between 8-128 chars and turn in into int
+  do {
   var length = parseInt(prompt("Please select password length between 8 and 128"));
-  if (length < 8 || length > 128) {
-    getPasswordOptions();
-  }
+  } while(length < 8 || length > 128);
   //ask user to confirm which char sets
   var specialChars = confirm("Would you like the password to include special characters");
   var numericChars = confirm("Would you like to have a numeric character?");
@@ -104,7 +103,6 @@ function getPasswordOptions() {
   var lowercaseChars = confirm("Would you like to have lowercase?")
   //add all selected char sets to an array so we can start generating it
   if(specialChars) {
-    getRandom(specialCharacters);
     charSets.push(specialCharacters);
   }
   if(numericChars) {
