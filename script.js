@@ -90,6 +90,8 @@ const upperCasedCharacters = [
 
 const charSets = [];
 let length;
+//declare a pass var as an empty string
+var pass = '';
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -102,18 +104,26 @@ function getPasswordOptions() {
   var numericChars = confirm("Would you like to have a numeric character?");
   var uppercaseChars = confirm("Would you like to have a uppercase?");
   var lowercaseChars = confirm("Would you like to have lowercase?")
-  //add all selected char sets to an array so we can start generating it
+  //add all selected char sets to an array so we can start generating it and add one character as we confirm to the random pass
   if (specialChars) {
     charSets.push(specialCharacters);
+    pass += getRandom(specialCharacters);
+    length--;
   }
   if (numericChars) {
     charSets.push(numericCharacters);
+    pass += getRandom(numericCharacters);
+    length--;
   }
   if (uppercaseChars) {
     charSets.push(upperCasedCharacters);
+    pass += getRandom(upperCasedCharacters);
+    length--;
   }
   if (lowercaseChars) {
     charSets.push(lowerCasedCharacters);
+    pass += getRandom(lowerCasedCharacters);
+    length--;
   }
   //make sure at least one char type is selected
 
@@ -130,12 +140,12 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  //call the passwordopts func
   getPasswordOptions();
-  var pass = '';
+  //loop through the length chosen by the user and add to the string
   for (let i = 0; i < length; i++) {
     pass += getRandom(charSets.flat());
   }
-  console.log(pass);
   return pass;
 }
 
