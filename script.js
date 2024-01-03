@@ -88,13 +88,13 @@ const upperCasedCharacters = [
   'Z'
 ];
 
-const charSets = [];
 let length;
-//declare a pass var as an empty string
-var pass = '';
+const charSets = [];
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  //declare a pass var as an empty string
+  var pass = '';
   //prompt the user for password length that needs to be between 8-128 chars and turn in into int
   do {
     length = parseInt(prompt("Please select password length between 8 and 128"));
@@ -132,6 +132,7 @@ function getPasswordOptions() {
     getPasswordOptions();
   }
   //flatten array and return it
+  return pass;
 }
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -141,7 +142,7 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
   //call the passwordopts func
-  getPasswordOptions();
+  var pass = getPasswordOptions();
   //loop through the length chosen by the user and add to the string
   for (let i = 0; i < length; i++) {
     pass += getRandom(charSets.flat());
